@@ -6,6 +6,9 @@ public class Hand : MonoBehaviour {
 	public float maxX;
 	public float minX;
 
+	public GameObject upperSleeve;
+	public GameObject lowerSleeve;
+
 	public string horizontalAxis;
 	public string verticalAxis;
 	public string useButton;
@@ -63,6 +66,7 @@ public class Hand : MonoBehaviour {
 		}
 
 		AdjustToBoundaries ();
+		MoveSleeves ();
 
 	}
 
@@ -122,6 +126,16 @@ public class Hand : MonoBehaviour {
 			}
 			transform.position = newPos;	
 		}
+	}
+
+	void MoveSleeves() {
+		Vector3 upperPos = upperSleeve.transform.position;
+		upperPos.y = transform.position.y;
+		upperSleeve.transform.position = upperPos;
+		Vector3 lowerPos = lowerSleeve.transform.position;
+		lowerPos.y = transform.position.y;
+		lowerSleeve.transform.position = lowerPos;
+
 	}
 
 	void PickUp() {
