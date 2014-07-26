@@ -12,4 +12,13 @@ public class Entity : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public void Move(Vector3 position) {
+		transform.position = position;
+	}
+
+	public void Use() {
+	
+	}
+
 }
