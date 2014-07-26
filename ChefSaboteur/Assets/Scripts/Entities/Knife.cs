@@ -4,6 +4,7 @@ using System.Collections;
 public class Knife : Entity {
 	
 	public override void Move(Vector3 position) {
+		position.z = transform.position.z;
 		transform.position = position;
 	}
 	

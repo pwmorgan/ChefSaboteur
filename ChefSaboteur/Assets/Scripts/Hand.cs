@@ -7,7 +7,6 @@ public class Hand : MonoBehaviour {
 	public float minX;
 
 	public GameObject upperSleeve;
-	public GameObject lowerSleeve;
 
 	public string horizontalAxis;
 	public string verticalAxis;
@@ -20,7 +19,7 @@ public class Hand : MonoBehaviour {
 	private float _controllerThreshold = 0.5f;
 	private float _friction = 5f;
 	private float speed = 1000f;
-	private float _maxVelocity = 3000f;
+	private float _maxVelocity = 500f;
 
 
 	// Use this for initialization
@@ -42,7 +41,7 @@ public class Hand : MonoBehaviour {
 
 		//Moves hand left and right
 		if (Mathf.Abs (Input.GetAxis (horizontalAxis)) > _controllerThreshold) {
-			_velocity.x += Input.GetAxis (horizontalAxis) * speed * Time.deltaTime;
+			_velocity.x = Input.GetAxis (horizontalAxis) * speed;
 
 			_velocity.x = Mathf.Max(-1 * _maxVelocity, _velocity.x);
 			_velocity.x = Mathf.Min(_maxVelocity, _velocity.x);
@@ -55,7 +54,7 @@ public class Hand : MonoBehaviour {
 
 		//moves hand up and down
 		if (Mathf.Abs (Input.GetAxis (verticalAxis)) > _controllerThreshold) {
-			_velocity.y += -1 * Input.GetAxis (verticalAxis) * speed * Time.deltaTime;
+			_velocity.y = -1 * Input.GetAxis (verticalAxis) * speed;
 			_velocity.y = Mathf.Max(-1 * _maxVelocity, _velocity.y);
 			_velocity.y = Mathf.Min(_maxVelocity, _velocity.y);
 			isActive = true;
@@ -134,10 +133,6 @@ public class Hand : MonoBehaviour {
 		Vector3 upperPos = upperSleeve.transform.position;
 		upperPos.y = transform.position.y;
 		upperSleeve.transform.position = upperPos;
-		Vector3 lowerPos = lowerSleeve.transform.position;
-		lowerPos.y = transform.position.y;
-		lowerSleeve.transform.position = lowerPos;
-
 	}
 
 	void PickUp() {
