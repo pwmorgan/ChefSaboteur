@@ -11,7 +11,7 @@ public class Hand : MonoBehaviour {
 	private GameObject _heldObject;
 	private Vector3 _velocity = new Vector3 (0, 0, 0);
 	private	bool _isExtending;
-	private int speed = 100;
+	private int speed = 1000;
 
 
 	// Use this for initialization
@@ -26,6 +26,8 @@ public class Hand : MonoBehaviour {
 		_velocity.y += -1 * Input.GetAxis (verticalAxis) * speed * Time.deltaTime;
 
 		transform.position += _velocity * Time.deltaTime;
+
+		_velocity -= _velocity * 1f * Time.deltaTime;
 
 	}
 }
