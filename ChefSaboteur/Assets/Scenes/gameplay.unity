@@ -701,6 +701,8 @@ MonoBehaviour:
   maxX: 1000
   minX: 300
   upperSleeve: {fileID: 2019294383}
+  openHand: {fileID: 21300000, guid: e586d735367234dc1924c320f91452ff, type: 3}
+  closedHand: {fileID: 21300000, guid: baec67cfb563549a9b67bb5155eddd0a, type: 3}
   horizontalAxis: Player2_Left_X
   verticalAxis: Player2_Left_Y
   useButton: Player2_Left_Extend
@@ -810,6 +812,8 @@ MonoBehaviour:
   maxX: 1000
   minX: 300
   upperSleeve: {fileID: 103804428}
+  openHand: {fileID: 21300000, guid: 8695424963c9a4bc0be84bec30b3ccc3, type: 3}
+  closedHand: {fileID: 21300000, guid: db8507d6c74f846228b22e828ae9d967, type: 3}
   horizontalAxis: Player1_Right_X
   verticalAxis: Player1_Right_Y
   useButton: Player1_Right
@@ -1134,6 +1138,26 @@ Prefab:
       propertyPath: minX
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 601d6523e3a81471baeb27507b56ae16, type: 2}
+      propertyPath: openHand
+      value: 
+      objectReference: {fileID: 21300000, guid: 8695424963c9a4bc0be84bec30b3ccc3,
+        type: 3}
+    - target: {fileID: 11400000, guid: 601d6523e3a81471baeb27507b56ae16, type: 2}
+      propertyPath: closedHand
+      value: 
+      objectReference: {fileID: 21300000, guid: db8507d6c74f846228b22e828ae9d967,
+        type: 3}
+    - target: {fileID: 11400004, guid: 601d6523e3a81471baeb27507b56ae16, type: 2}
+      propertyPath: openHand
+      value: 
+      objectReference: {fileID: 21300000, guid: 2fb8a71dc7cd34bae9a49409278e471e,
+        type: 3}
+    - target: {fileID: 11400004, guid: 601d6523e3a81471baeb27507b56ae16, type: 2}
+      propertyPath: closedHand
+      value: 
+      objectReference: {fileID: 21300000, guid: b9324c0cbd50345d3a3044effaef978b,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 601d6523e3a81471baeb27507b56ae16, type: 2}
   m_RootGameObject: {fileID: 1571993944}
@@ -1345,6 +1369,8 @@ MonoBehaviour:
   maxX: 1000
   minX: 300
   upperSleeve: {fileID: 2021197102}
+  openHand: {fileID: 21300000, guid: 8648209792b6547ff8d3ceb636071838, type: 3}
+  closedHand: {fileID: 21300000, guid: 98548642ff0fb4bdab7cd026b975224c, type: 3}
   horizontalAxis: Player2_Right_X
   verticalAxis: Player2_Right_Y
   useButton: Player2_Right
@@ -1492,6 +1518,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
+      propertyPath: openHand
+      value: 
+      objectReference: {fileID: 21300000, guid: 8648209792b6547ff8d3ceb636071838,
+        type: 3}
+    - target: {fileID: 11400004, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
+      propertyPath: closedHand
+      value: 
+      objectReference: {fileID: 21300000, guid: 98548642ff0fb4bdab7cd026b975224c,
+        type: 3}
+    - target: {fileID: 11400002, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
+      propertyPath: openHand
+      value: 
+      objectReference: {fileID: 21300000, guid: e586d735367234dc1924c320f91452ff,
+        type: 3}
+    - target: {fileID: 11400002, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
+      propertyPath: closedHand
+      value: 
+      objectReference: {fileID: 21300000, guid: baec67cfb563549a9b67bb5155eddd0a,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
   m_RootGameObject: {fileID: 181990521}
@@ -1718,6 +1764,8 @@ MonoBehaviour:
   maxX: 1000
   minX: 300
   upperSleeve: {fileID: 288279702}
+  openHand: {fileID: 21300000, guid: 2fb8a71dc7cd34bae9a49409278e471e, type: 3}
+  closedHand: {fileID: 21300000, guid: b9324c0cbd50345d3a3044effaef978b, type: 3}
   horizontalAxis: Player1_Left_X
   verticalAxis: Player1_Left_Y
   useButton: Player1_Left_Extend
