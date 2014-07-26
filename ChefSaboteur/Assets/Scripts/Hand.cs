@@ -39,7 +39,8 @@ public class Hand : MonoBehaviour {
 	void Move() {
 
 		bool isActive = false;
-		
+
+		//Moves hand left and right
 		if (Mathf.Abs (Input.GetAxis (horizontalAxis)) > _controllerThreshold) {
 			_velocity.x += Input.GetAxis (horizontalAxis) * speed * Time.deltaTime;
 
@@ -47,11 +48,12 @@ public class Hand : MonoBehaviour {
 			_velocity.x = Mathf.Min(_maxVelocity, _velocity.x);
 			isActive = true;
 		}
-		
+
 		if (Input.GetAxis (useButton) > _controllerThreshold) {
 			Debug.Log ("Extend Arm.");
 		}
 
+		//moves hand up and down
 		if (Mathf.Abs (Input.GetAxis (verticalAxis)) > _controllerThreshold) {
 			_velocity.y += -1 * Input.GetAxis (verticalAxis) * speed * Time.deltaTime;
 			_velocity.y = Mathf.Max(-1 * _maxVelocity, _velocity.y);
