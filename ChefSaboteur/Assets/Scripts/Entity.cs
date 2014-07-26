@@ -19,6 +19,10 @@ public abstract class Entity : MonoBehaviour {
 		_hand = hand;
 	}
 
+	public bool IsFree() {
+		return _hand == null;
+	}
+
 	public abstract void Use ();
 	public abstract void Move (Vector3 position);
 	public abstract void Cut();

@@ -8,11 +8,15 @@ public class Hand : MonoBehaviour {
 
 	public GameObject upperSleeve;
 
+	public Sprite openHand;
+	public Sprite closedHand;
+
 	public string horizontalAxis;
 	public string verticalAxis;
 	public string useButton;
 	public string actionButton;
 
+	private SpriteRenderer _spriteRenderer;
 	private Entity _heldObject = null;
 	private Vector3 _velocity = new Vector3 (0, 0, 0);
 	private	bool _isExtending;
@@ -24,7 +28,7 @@ public class Hand : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		_spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer> () as SpriteRenderer;
 	}
 	
 	// Update is called once per frame
@@ -71,6 +75,7 @@ public class Hand : MonoBehaviour {
 
 	public void Release() {
 		_heldObject = null;
+		_spriteRenderer.sprite = openHand;
 	}
 
 	void Interact() {
@@ -137,9 +142,11 @@ public class Hand : MonoBehaviour {
 		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
 
 		foreach (Entity entity in entities) {
-			if (Vector3.Distance(transform.position, entity.transform.position) < 150) {
+			if (Vector3.Distance(transform.position, entity.transform.position) < 150 && entity.IsFree()) {
 				_heldObject = entity;
+				_spriteRenderer.sprite = closedHand;
 				entity.PickUp(this);
+
 				return;
 			}
 		}
