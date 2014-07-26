@@ -75,7 +75,6 @@ public class Hand : MonoBehaviour {
 
 	void Interact() {
 
-		
 		if (_heldObject != null) {
 			_heldObject.Move(transform.position);
 		}
