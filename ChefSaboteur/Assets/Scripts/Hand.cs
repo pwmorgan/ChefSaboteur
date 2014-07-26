@@ -63,6 +63,10 @@ public class Hand : MonoBehaviour {
 
 	}
 
+	public void Release() {
+		_heldObject = null;
+	}
+
 	void Interact() {
 
 		
@@ -70,7 +74,7 @@ public class Hand : MonoBehaviour {
 			_heldObject.Move(transform.position);
 		}
 
-		if (Input.GetButton (actionButton)) {
+		if (Input.GetButtonDown (actionButton)) {
 			if (_heldObject == null) {
 				PickUp();
 				Debug.Log ("Pick Up Item");
@@ -116,6 +120,7 @@ public class Hand : MonoBehaviour {
 		foreach (Entity entity in entities) {
 			if (Vector3.Distance(transform.position, entity.transform.position) < 150) {
 				_heldObject = entity;
+				entity.PickUp(this);
 				return;
 			}
 		}
