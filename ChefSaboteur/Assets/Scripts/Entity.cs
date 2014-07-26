@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Entity : MonoBehaviour {
+public abstract class Entity : MonoBehaviour {
 
-	private Hand _hand = null;
+	protected Hand _hand = null;
 
 	// Use this for initialization
 	void Start () {
@@ -14,20 +14,13 @@ public class Entity : MonoBehaviour {
 	void Update () {
 	
 	}
-
+	
 	public void PickUp(Hand hand) {
 		_hand = hand;
 	}
 
-	public void Move(Vector3 position) {
-		transform.position = position;
-	}
-
-	public void Use() {
-		if (_hand != null) {
-			_hand.Release ();
-			_hand = null;
-		}
-	}
+	public abstract void Use ();
+	public abstract void Move (Vector3 position);
+	public abstract void Cut();
 
 }

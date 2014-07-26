@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class Hand : MonoBehaviour {
-	
+
+	public float maxX;
+	public float minX;
+
 	public string horizontalAxis;
 	public string verticalAxis;
 	public string useButton;
@@ -90,25 +93,33 @@ public class Hand : MonoBehaviour {
 		if (transform.position.x < 0) {
 			Vector3 newPos = transform.position;
 			newPos.x = 0;
-			_velocity.x = 0;
+			if (_velocity.x < 0){
+				_velocity.x = 0;
+			}
 			transform.position = newPos;
 		}
 		if (transform.position.x > 1280) {
 			Vector3 newPos = transform.position;	
 			newPos.x = 1280;
-			_velocity.x = 0;
+			if (_velocity.x > 0){
+				_velocity.x = 0;
+			}
 			transform.position = newPos;	
 		}
 		if (transform.position.y < 0) {
 			Vector3 newPos = transform.position;
 			newPos.y = 0;
-			_velocity.y = 0;
+			if (_velocity.y < 0){
+				_velocity.y = 0;
+			}
 			transform.position = newPos;
 		}
 		if (transform.position.y > 720) {
 			Vector3 newPos = transform.position;	
 			newPos.y = 720;
+			if (_velocity.y > 0){
 			_velocity.y = 0;
+			}
 			transform.position = newPos;	
 		}
 	}
@@ -125,6 +136,11 @@ public class Hand : MonoBehaviour {
 			}
 		}
 
+	}
+	
+	public void Cut() {
+		// Hand takes damage
+		// Hand drops blood
 	}
 
 }
