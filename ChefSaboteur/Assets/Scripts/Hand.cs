@@ -2,11 +2,17 @@
 using System.Collections;
 
 public class Hand : MonoBehaviour {
+	
+	public string horizontalAxis;
+	public string verticalAxis;
+	public string useButton;
+	public string actionButton;
 
 	private GameObject _heldObject;
-	private Vector3 _position;
-	private Vector3 _velocity;
+	private Vector3 _velocity = new Vector3 (0, 0, 0);
 	private	bool _isExtending;
+	private int speed = 100;
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +22,10 @@ public class Hand : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		// If holding an object
-		// Move object to position;
+		_velocity.x += Input.GetAxis (horizontalAxis) * speed * Time.deltaTime;
+		_velocity.y += -1 * Input.GetAxis (verticalAxis) * speed * Time.deltaTime;
+
+		transform.position += _velocity * Time.deltaTime;
 
 	}
 }
