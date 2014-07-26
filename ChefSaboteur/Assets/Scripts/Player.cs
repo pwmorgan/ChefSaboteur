@@ -6,6 +6,11 @@ public class Player : MonoBehaviour {
 	public Hand lefthand;
 	public Hand righthand;
 
+	private float _score;
+	private float _dishQuality;
+	private float _dishProgress;
+	private int _phase;
+
 	// Use this for initialization
 	void Start () {
 	
