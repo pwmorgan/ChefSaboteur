@@ -94,17 +94,17 @@ public class Hand : MonoBehaviour {
 	}
 
 	void AdjustToBoundaries() {
-		if (transform.position.x < 0) {
+		if (transform.position.x < minX) {
 			Vector3 newPos = transform.position;
-			newPos.x = 0;
+			newPos.x = minX;
 			if (_velocity.x < 0){
 				_velocity.x = 0;
 			}
 			transform.position = newPos;
 		}
-		if (transform.position.x > 1280) {
+		if (transform.position.x > maxX) {
 			Vector3 newPos = transform.position;	
-			newPos.x = 1280;
+			newPos.x = maxX;
 			if (_velocity.x > 0){
 				_velocity.x = 0;
 			}

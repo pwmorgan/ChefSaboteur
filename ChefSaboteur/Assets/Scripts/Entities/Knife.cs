@@ -8,10 +8,10 @@ public class Knife : Entity {
 	}
 	
 	public override void Use() {
-		// Cut Nearby Objects
-		// If collides with hand != _hand or entity != this
-			// Cut Object
-			
+		if (_hand != null) {
+			_hand.Release ();
+			_hand = null;
+		}
 	}
 
 	public override void Cut(){
