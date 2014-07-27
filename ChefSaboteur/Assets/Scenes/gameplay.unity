@@ -633,7 +633,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 428269064}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: -1.62920685e-07}
-  m_LocalPosition: {x: -22.6803398, y: -129.601562, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 740319392}
@@ -719,6 +719,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 740319392}
   - 114: {fileID: 740319391}
+  - 65: {fileID: 740319394}
+  - 54: {fileID: 740319393}
   m_Layer: 0
   m_Name: cuttingboardRight
   m_TagString: Untagged
@@ -744,12 +746,39 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 740319390}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -1.62920685e-07}
-  m_LocalPosition: {x: 1000, y: 200, z: 200}
+  m_LocalPosition: {x: 1092.21436, y: 371.018188, z: 200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 428269065}
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!54 &740319393
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 740319390}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &740319394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 740319390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 220, y: 300, z: 10000}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &787264982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,6 +1411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d1c36ca335d4bf68ac16da29e85948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NormalKnife: {fileID: 21300000, guid: 753d95839460d48ec9f9c7e3372f26b5, type: 3}
+  PickedUpKnife: {fileID: 21300000, guid: 05460d707e6e6470494987b2092e967c, type: 3}
 --- !u!65 &1034581864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2532,6 +2563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d1c36ca335d4bf68ac16da29e85948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NormalKnife: {fileID: 21300000, guid: 753d95839460d48ec9f9c7e3372f26b5, type: 3}
+  PickedUpKnife: {fileID: 21300000, guid: 05460d707e6e6470494987b2092e967c, type: 3}
 --- !u!54 &1653690835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2589,7 +2622,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1719893585}
   - 114: {fileID: 1719893583}
-  - 61: {fileID: 1719893584}
+  - 54: {fileID: 1719893586}
+  - 65: {fileID: 1719893584}
   m_Layer: 0
   m_Name: cuttingboardLeft
   m_TagString: Untagged
@@ -2608,17 +2642,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dad8da1ec3246a4e9d7820f7f00e971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &1719893584
-BoxCollider2D:
+--- !u!65 &1719893584
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1719893582}
-  m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: 365, y: 600}
-  m_Center: {x: 465, y: -0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 220, y: 300, z: 10000}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1719893585
 Transform:
   m_ObjectHideFlags: 0
@@ -2626,12 +2661,27 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1719893582}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -1.62920685e-07}
-  m_LocalPosition: {x: 736.660461, y: 374.814209, z: .86328125}
+  m_LocalPosition: {x: 283.9711, y: 470.379425, z: .86328125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1744870519}
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!54 &1719893586
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719893582}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1723000030
 Prefab:
   m_ObjectHideFlags: 0
@@ -2699,7 +2749,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744870518}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: -1.62920685e-07}
-  m_LocalPosition: {x: 460.08551, y: -35.6405907, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1719893585}
