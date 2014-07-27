@@ -1,8 +1,6 @@
 fileFormatVersion: 2
 guid: 88a2c68333ef6408a9262c4229bd7d7c
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: p1_bottom_sleeveback
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,7 +21,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 4096
+  maxTextureSize: 2048
   textureSettings:
     filterMode: 0
     aniso: 1
