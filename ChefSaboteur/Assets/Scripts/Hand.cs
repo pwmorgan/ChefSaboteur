@@ -143,6 +143,18 @@ public class Hand : MonoBehaviour {
 						case Entity.ACTIONRESULT.DROPPED :
 							_heldObject = null;
 							break;
+						case Entity.ACTIONRESULT.CHOP :
+							foreach(GameObject gobj in _collisionList)
+							{
+								Vegetable vobj = gobj.GetComponent<Vegetable>();
+								if(vobj != null)
+								{
+									vobj.Chop();
+									break;
+								}
+							}
+
+							break;
 					}
 				}
 			}
