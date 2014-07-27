@@ -9,14 +9,15 @@ public class Hand : MonoBehaviour {
 
 	public GameObject upperSleeve;
 
-	public Sprite openHand;
-	public Sprite closedHand;
+	public Sprite[] openHand;
+	public Sprite[] closedHand;
 
 	public string horizontalAxis;
 	public string verticalAxis;
 	public string useButton;
 	public string actionButton;
 
+	private int _graspRange = 150;
 	private bool _actionButtonActive = false;
 	private SpriteRenderer _spriteRenderer;
 	private Entity _heldObject = null;
@@ -85,7 +86,7 @@ public class Hand : MonoBehaviour {
 
 	public void Release() {
 		_heldObject = null;
-		_spriteRenderer.sprite = openHand;
+		_spriteRenderer.sprite = openHand[_health];
 	}
 
 	void OnTriggerExit(Collider other) {
@@ -114,12 +115,14 @@ public class Hand : MonoBehaviour {
 			targetobj = _heldObject;
 			return _heldObject.GetContext();
 		}
+
 		if(_collisionList.Count > 0)
 		{
 			Entity currentent =  _collisionList[0].GetComponent<Entity>() as Entity;
 			targetobj = currentent;
 			return currentent.GetContext();
 		}
+		
 		targetobj = null;
 		return null;
 	}
