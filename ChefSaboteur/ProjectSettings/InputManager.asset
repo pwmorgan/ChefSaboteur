@@ -210,7 +210,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 7
+    axis: 4
     joyNum: 2
   - serializedVersion: 3
     m_Name: Player2_Right
