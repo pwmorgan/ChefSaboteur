@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 532ef0a0301964d15ade3376889e0d00
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Celery
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

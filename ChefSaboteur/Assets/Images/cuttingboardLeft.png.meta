@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 84324326715da48bb8418cf2cb8981e2
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: cuttingboardLeft
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

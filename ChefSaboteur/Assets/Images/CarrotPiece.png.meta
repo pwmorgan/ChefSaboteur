@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: df31b5b4fa48d456aa2607544ff8d8bc
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: CarrotPiece
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

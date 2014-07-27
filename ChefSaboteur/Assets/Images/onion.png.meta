@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: bbcd5181dbfb04b439e775891209fcf5
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: onion
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

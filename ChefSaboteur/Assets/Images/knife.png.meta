@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 753d95839460d48ec9f9c7e3372f26b5
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: knife
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

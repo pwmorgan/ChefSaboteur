@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 3c16c2fff4d194123bbe2c8a6543f4de
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: p1_top_sleevefront
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
