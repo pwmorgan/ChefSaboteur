@@ -173,23 +173,6 @@ public class Hand : MonoBehaviour {
 		upperSleeve.transform.position = upperPos;
 	}
 
-	/*
-	void PickUp() {
-
-		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
-
-		foreach (Entity entity in entities) {
-			if (Vector3.Distance(transform.position, entity.transform.position) < 150 && entity.IsFree()) {
-				_heldObject = entity;
-				_spriteRenderer.sprite = closedHand;
-				//entity.PickUp(this);
-
-				return;
-			}
-		}
-
-	}*/
-
 	private bool HasItem() {
 		if (_heldObject != null) {
 			return true;
