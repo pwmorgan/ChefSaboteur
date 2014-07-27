@@ -16,6 +16,7 @@ public class Hand : MonoBehaviour {
 	public string useButton;
 	public string actionButton;
 
+	private int _graspRange = 150;
 	private bool _actionButtonActive = false;
 	private SpriteRenderer _spriteRenderer;
 	private Entity _heldObject = null;
@@ -93,7 +94,7 @@ public class Hand : MonoBehaviour {
 		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
 		
 		foreach (Entity entity in entities) {
-			if (Vector3.Distance(transform.position, entity.transform.position) < 150 ){ 
+			if (Vector3.Distance(transform.position, entity.transform.position) < _graspRange ){ 
 				targetobj = entity;
 				return entity.GetContext();
 			}
