@@ -35,7 +35,8 @@ public class Hand : MonoBehaviour {
 	void Update () {
 
 		Move ();
-		Interact ();
+		Entity.ActionMethod action = GetContext ();
+		Interact (action);
 
 	}
 
@@ -80,22 +81,42 @@ public class Hand : MonoBehaviour {
 		_spriteRenderer.sprite = openHand;
 	}
 
-	void Interact() {
-
-		if (_heldObject != null) {
-			_heldObject.Move(transform.position);
+	Entity.ActionMethod  GetContext() { 
+		if (HasItem()) {
+			return _heldObject.GetContext();
 		}
 
-		if (Input.GetButtonDown (actionButton)) {
-			if (_heldObject == null) {
-				PickUp();
-				Debug.Log ("Pick Up Item");
-			} else {
-				_heldObject.Use();
-				Debug.Log ("Use Item");
+		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
+		
+		foreach (Entity entity in entities) {
+			if (Vector3.Distance(transform.position, entity.transform.position) < 150 ){ //&& entity.IsFree()) {
+				return entity.GetContext();
 			}
 		}
 
+		return null;
+	}
+
+	void Interact(Entity.ActionMethod actionmethod) {
+		if (Input.GetButtonDown (actionButton)) {
+			Debug.Log("ACTION BUTTON!");
+			if(actionmethod != null) { 
+				Debug.Log ("ACTION METHOD");
+				actionmethod(); 
+			}
+			/*
+			if (HasItem()) {
+				PickUp();
+				Debug.Log ("Pick Up Item");
+			} else {
+				string result = _heldObject.Activate();
+				Debug.Log ("Use Item");
+			}*/
+		}
+
+		if (HasItem()) {
+			_heldObject.Move(transform.position);
+		}		
 	}
 
 	void AdjustToBoundaries() {
@@ -154,7 +175,14 @@ public class Hand : MonoBehaviour {
 		}
 
 	}
-	
+
+	private bool HasItem() {
+		if (_heldObject != null) {
+			return true;
+		} 
+		return false;
+	}
+
 	public void Cut() {
 		// Hand takes damage
 		// Hand drops blood

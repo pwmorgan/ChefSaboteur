@@ -7,16 +7,17 @@ public class Knife : Entity {
 		position.z = transform.position.z;
 		transform.position = position;
 	}
-	
-	public override void Use() {
+
+	public override ActionMethod GetContext()
+	{
+		return Use;
+	}
+
+	private void Use() {
 		if (_hand != null) {
 			_hand.Release ();
 			_hand = null;
 		}
-	}
-
-	public override void Cut(){
-
 	}
 
 }

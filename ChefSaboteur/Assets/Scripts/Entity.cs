@@ -6,6 +6,8 @@ public abstract class Entity : MonoBehaviour {
 		HELD,
 		UNHELD
 	}
+	
+	public delegate void ActionMethod();
 
 	protected Hand _hand = null;
 	protected ENTITYSTATE state = ENTITYSTATE.UNHELD;
@@ -20,11 +22,6 @@ public abstract class Entity : MonoBehaviour {
 
 	}
 
-	public void AttemptAction()
-	{
-
-	}
-	
 	public void PickUp(Hand hand) {
 		_hand = hand;
 	}
@@ -33,24 +30,17 @@ public abstract class Entity : MonoBehaviour {
 		return _hand == null;
 	}
 
-	public abstract void Use ();
-	public abstract void Move (Vector3 position);
-	public abstract void Cut();
+	public abstract void Move(Vector3 position);
+	public abstract ActionMethod GetContext ();
 
-	public virtual void ActionHeld(string context)
+	protected virtual void ActionHeld(string context)
 	{
 
 	}
 
-	public virtual void ActionUnheld(string context)
+	protected virtual void ActionUnheld(string context)
 	{
 
 	}
-	//Pickup
-	//In Hand
-	//Not in Hand
-	//Context
-
-
 
 }
