@@ -1,8 +1,6 @@
 fileFormatVersion: 2
-guid: 4fc30fad4b35c4b2d84655aa03c507fa
+guid: 36c7bc00cf76f43e285d1a873767aab4
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CeleryPiece
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,9 +24,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: 0
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

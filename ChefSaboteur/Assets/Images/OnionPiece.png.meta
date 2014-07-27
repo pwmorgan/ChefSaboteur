@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: c6265af0424d14125b413e2bc523473b
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: OnionPiece
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

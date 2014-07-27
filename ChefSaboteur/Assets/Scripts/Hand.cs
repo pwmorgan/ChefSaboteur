@@ -35,8 +35,9 @@ public class Hand : MonoBehaviour {
 	void Update () {
 
 		Move ();
-		Entity.ActionMethod action = GetContext ();
-		Interact (action);
+		Entity targetobj;
+		Entity.ActionMethod action = GetContext (out targetobj);
+		Interact (action, targetobj);
 
 	}
 
@@ -81,8 +82,9 @@ public class Hand : MonoBehaviour {
 		_spriteRenderer.sprite = openHand;
 	}
 
-	Entity.ActionMethod  GetContext() { 
+	Entity.ActionMethod  GetContext(out Entity targetobj) { 
 		if (HasItem()) {
+			targetobj = _heldObject;
 			return _heldObject.GetContext();
 		}
 
@@ -90,33 +92,45 @@ public class Hand : MonoBehaviour {
 		
 		foreach (Entity entity in entities) {
 			if (Vector3.Distance(transform.position, entity.transform.position) < 150 ){ //&& entity.IsFree()) {
+				targetobj = entity;
 				return entity.GetContext();
 			}
 		}
-
+		targetobj = null;
 		return null;
 	}
 
-	void Interact(Entity.ActionMethod actionmethod) {
+	void Interact(Entity.ActionMethod actionmethod, Entity targetobj) {
 		if (Input.GetButtonDown (actionButton)) {
 			Debug.Log("ACTION BUTTON!");
 			if(actionmethod != null) { 
 				Debug.Log ("ACTION METHOD");
-				actionmethod(); 
+				Entity.ACTIONRESULT result = actionmethod(); 
+				switch(result)
+				{
+					case Entity.ACTIONRESULT.PICKEDUP :
+						_heldObject = targetobj;
+						break;
+					case Entity.ACTIONRESULT.DROPPED :
+						_heldObject = null;
+						break;
+				}
 			}
-			/*
-			if (HasItem()) {
-				PickUp();
-				Debug.Log ("Pick Up Item");
-			} else {
-				string result = _heldObject.Activate();
-				Debug.Log ("Use Item");
-			}*/
 		}
 
-		if (HasItem()) {
+		if (HasItem ()) {
 			_heldObject.Move(transform.position);
-		}		
+		}
+		/*
+		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
+		
+		foreach (Entity entity in entities) {
+			if(entity.State == Entity.ENTITYSTATE.HELD)
+			{
+				entity.Move(transform.position);
+			}
+		}*/
+		
 	}
 
 	void AdjustToBoundaries() {
@@ -160,6 +174,7 @@ public class Hand : MonoBehaviour {
 		upperSleeve.transform.position = upperPos;
 	}
 
+	/*
 	void PickUp() {
 
 		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
@@ -168,13 +183,13 @@ public class Hand : MonoBehaviour {
 			if (Vector3.Distance(transform.position, entity.transform.position) < 150 && entity.IsFree()) {
 				_heldObject = entity;
 				_spriteRenderer.sprite = closedHand;
-				entity.PickUp(this);
+				//entity.PickUp(this);
 
 				return;
 			}
 		}
 
-	}
+	}*/
 
 	private bool HasItem() {
 		if (_heldObject != null) {

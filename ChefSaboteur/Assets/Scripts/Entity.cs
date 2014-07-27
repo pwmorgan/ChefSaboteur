@@ -2,19 +2,33 @@
 using System.Collections;
 
 public abstract class Entity : MonoBehaviour {
-	protected enum ENTITYSTATE {
+
+	public enum ENTITYSTATE {
 		HELD,
 		UNHELD
 	}
-	
-	public delegate void ActionMethod();
+
+	public enum ACTIONRESULT {
+		NOTHING,
+		PICKEDUP,
+		DROPPED
+	}
+
+
+	public delegate ACTIONRESULT ActionMethod();
 
 	protected Hand _hand = null;
-	protected ENTITYSTATE state = ENTITYSTATE.UNHELD;
+
+	private ENTITYSTATE _state;
+	public ENTITYSTATE State {
+		get { return _state; }
+		protected set { _state = value; }
+	}
+
 
 	// Use this for initialization
 	void Start () {
-	
+		_state = ENTITYSTATE.UNHELD;
 	}
 	
 	// Update is called once per frame
@@ -22,25 +36,25 @@ public abstract class Entity : MonoBehaviour {
 
 	}
 
-	public void PickUp(Hand hand) {
-		_hand = hand;
+	public virtual void Move(Vector3 position) {
+		position.z = transform.position.z;
+		transform.position = position;
 	}
 
 	public bool IsFree() {
 		return _hand == null;
 	}
 
-	public abstract void Move(Vector3 position);
 	public abstract ActionMethod GetContext ();
 
-	protected virtual void ActionHeld(string context)
-	{
-
+	protected ACTIONRESULT PickUp() {
+		State = ENTITYSTATE.HELD;
+		return ACTIONRESULT.PICKEDUP;
 	}
 
-	protected virtual void ActionUnheld(string context)
-	{
-
+	protected ACTIONRESULT Drop() {
+		State = ENTITYSTATE.UNHELD;
+		return ACTIONRESULT.DROPPED;
 	}
 
 }

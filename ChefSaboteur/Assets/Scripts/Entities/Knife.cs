@@ -2,22 +2,18 @@
 using System.Collections;
 
 public class Knife : Entity {
-	
-	public override void Move(Vector3 position) {
-		position.z = transform.position.z;
-		transform.position = position;
-	}
 
 	public override ActionMethod GetContext()
 	{
-		return Use;
+		if (State == ENTITYSTATE.UNHELD) {
+			return PickUp;
+		} else {
+			return Drop;
+		}
 	}
 
-	private void Use() {
-		if (_hand != null) {
-			_hand.Release ();
-			_hand = null;
-		}
+	private ACTIONRESULT Use() {
+		return ACTIONRESULT.NOTHING;
 	}
 
 }
