@@ -103,24 +103,22 @@ public class Hand : MonoBehaviour {
 	}
 
 	void Interact(Entity.ActionMethod actionmethod, Entity targetobj) {
-		if (Input.GetAxis (useButton) > 0.5) {
-			if (_actionButtonActive) {
-				return;
-			}
-
-			_actionButtonActive = true;
-			Debug.Log("ACTION BUTTON!");
-			if(actionmethod != null) { 
-				Debug.Log ("ACTION METHOD");
-				Entity.ACTIONRESULT result = actionmethod(); 
-				switch(result)
-				{
-					case Entity.ACTIONRESULT.PICKEDUP :
-						_heldObject = targetobj;
-						break;
-					case Entity.ACTIONRESULT.DROPPED :
-						_heldObject = null;
-						break;
+		if (Input.GetAxis (useButton) > 0.5f) {
+			if (!_actionButtonActive) {
+				_actionButtonActive = true;
+				Debug.Log("ACTION BUTTON!");
+				if(actionmethod != null) { 
+					Debug.Log ("ACTION METHOD");
+					Entity.ACTIONRESULT result = actionmethod(); 
+					switch(result)
+					{
+						case Entity.ACTIONRESULT.PICKEDUP :
+							_heldObject = targetobj;
+							break;
+						case Entity.ACTIONRESULT.DROPPED :
+							_heldObject = null;
+							break;
+					}
 				}
 			}
 		} else {
