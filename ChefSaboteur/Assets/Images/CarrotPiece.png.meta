@@ -1,8 +1,6 @@
 fileFormatVersion: 2
 guid: df31b5b4fa48d456aa2607544ff8d8bc
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CarrotPiece
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,7 +21,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 1024
+  maxTextureSize: 4096
   textureSettings:
     filterMode: 0
     aniso: 1

@@ -8,8 +8,8 @@ public class Hand : MonoBehaviour {
 
 	public GameObject upperSleeve;
 
-	public Sprite openHand;
-	public Sprite closedHand;
+	public Sprite[] openHand;
+	public Sprite[] closedHand;
 
 	public string horizontalAxis;
 	public string verticalAxis;
@@ -82,7 +82,7 @@ public class Hand : MonoBehaviour {
 
 	public void Release() {
 		_heldObject = null;
-		_spriteRenderer.sprite = openHand;
+		_spriteRenderer.sprite = openHand[_health];
 	}
 
 	Entity.ActionMethod  GetContext(out Entity targetobj) { 
