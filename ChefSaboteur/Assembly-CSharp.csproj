@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Entities\Board.cs" />
      <Compile Include="Assets\Scripts\Entities\Knife.cs" />
      <Compile Include="Assets\Scripts\Entities\Vegetable.cs" />
      <Compile Include="Assets\Scripts\Entity.cs" />

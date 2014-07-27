@@ -91,7 +91,7 @@ public class Hand : MonoBehaviour {
 		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
 		
 		foreach (Entity entity in entities) {
-			if (Vector3.Distance(transform.position, entity.transform.position) < 150 ){ //&& entity.IsFree()) {
+			if (Vector3.Distance(transform.position, entity.transform.position) < 150 ){ 
 				targetobj = entity;
 				return entity.GetContext();
 			}
@@ -121,16 +121,7 @@ public class Hand : MonoBehaviour {
 		if (HasItem ()) {
 			_heldObject.Move(transform.position);
 		}
-		/*
-		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
-		
-		foreach (Entity entity in entities) {
-			if(entity.State == Entity.ENTITYSTATE.HELD)
-			{
-				entity.Move(transform.position);
-			}
-		}*/
-		
+			
 	}
 
 	void AdjustToBoundaries() {
