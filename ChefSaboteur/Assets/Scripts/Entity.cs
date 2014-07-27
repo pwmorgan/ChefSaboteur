@@ -14,7 +14,6 @@ public abstract class Entity : MonoBehaviour {
 		DROPPED
 	}
 
-
 	public delegate ACTIONRESULT ActionMethod();
 
 	protected Hand _hand = null;

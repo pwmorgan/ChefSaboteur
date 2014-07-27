@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Hand : MonoBehaviour {
 
@@ -27,10 +28,13 @@ public class Hand : MonoBehaviour {
 	private float _maxVelocity = 500f;
 	private int _health = 3;
 
+	private List<GameObject> _collisionList;
 
 	// Use this for initialization
 	void Start () {
 		_spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer> () as SpriteRenderer;
+
+		_collisionList = new List<GameObject> ();
 	}
 	
 	// Update is called once per frame
@@ -84,19 +88,37 @@ public class Hand : MonoBehaviour {
 		_spriteRenderer.sprite = openHand;
 	}
 
+	void OnTriggerExit(Collider other) {
+		Debug.Log ("COLL Exit: " +  other.gameObject.ToString());
+		_collisionList.Remove (other.gameObject);
+	}
+	void OnTriggerEnter(Collider other) {
+		Debug.Log ("COLL Enter: " + other.gameObject.ToString());
+		GameObject gameobj = other.gameObject;
+		if (gameobj.GetComponent<Entity> () != null) {
+						bool isUnique = true;
+						foreach (GameObject gobj in _collisionList) {
+								if (gobj == gameobj) {
+										isUnique = false;
+										break;
+								}
+						}
+						if (isUnique) {
+								_collisionList.Add (gameobj);
+						}
+		}
+	}
+
 	Entity.ActionMethod  GetContext(out Entity targetobj) { 
 		if (HasItem()) {
 			targetobj = _heldObject;
 			return _heldObject.GetContext();
 		}
-
-		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
-		
-		foreach (Entity entity in entities) {
-			if (Vector3.Distance(transform.position, entity.transform.position) < 150 ){ 
-				targetobj = entity;
-				return entity.GetContext();
-			}
+		if(_collisionList.Count > 0)
+		{
+			Entity currentent =  _collisionList[0].GetComponent<Entity>() as Entity;
+			targetobj = currentent;
+			return currentent.GetContext();
 		}
 		targetobj = null;
 		return null;
