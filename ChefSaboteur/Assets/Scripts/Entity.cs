@@ -12,7 +12,8 @@ public abstract class Entity : MonoBehaviour {
 	public enum ACTIONRESULT {
 		NOTHING,
 		PICKEDUP,
-		DROPPED
+		DROPPED,
+		CHOP
 	}
 
 	public delegate ACTIONRESULT ActionMethod();
@@ -38,9 +39,12 @@ public abstract class Entity : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		ChildUpdate ();
 	}
 
+	protected virtual void ChildUpdate() {
+		//
+	}
 	
 	void OnTriggerExit(Collider other) {
 		Debug.Log ("COLL Exit: " +  other.gameObject.ToString());

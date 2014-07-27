@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce0fa2e5cb064ba5a84e499b8daeb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChildSprite: {fileID: 21300000, guid: df31b5b4fa48d456aa2607544ff8d8bc, type: 3}
+  VegPiece: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
 --- !u!212 &96403548
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -430,6 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce0fa2e5cb064ba5a84e499b8daeb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChildSprite: {fileID: 21300000, guid: df31b5b4fa48d456aa2607544ff8d8bc, type: 3}
+  VegPiece: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
 --- !u!212 &164505218
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -494,7 +498,7 @@ Transform:
   - {fileID: 811691868}
   - {fileID: 1514214483}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &181990523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce0fa2e5cb064ba5a84e499b8daeb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChildSprite: {fileID: 21300000, guid: c6265af0424d14125b413e2bc523473b, type: 3}
+  VegPiece: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
 --- !u!65 &787264986
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -887,7 +893,7 @@ GameObject:
   - 54: {fileID: 791216411}
   - 65: {fileID: 791216410}
   m_Layer: 0
-  m_Name: onion
+  m_Name: 
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -946,6 +952,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce0fa2e5cb064ba5a84e499b8daeb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChildSprite: {fileID: 21300000, guid: c6265af0424d14125b413e2bc523473b, type: 3}
+  VegPiece: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
 --- !u!212 &791216413
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1360,6 +1368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce0fa2e5cb064ba5a84e499b8daeb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChildSprite: {fileID: 21300000, guid: 4fc30fad4b35c4b2d84655aa03c507fa, type: 3}
+  VegPiece: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
 --- !u!212 &1013878400
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1413,6 +1423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalKnife: {fileID: 21300000, guid: 753d95839460d48ec9f9c7e3372f26b5, type: 3}
   PickedUpKnife: {fileID: 21300000, guid: 05460d707e6e6470494987b2092e967c, type: 3}
+  ChopSpeed: 100
 --- !u!65 &1034581864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1576,6 +1587,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c5392707a985c074ab05b8b264f2cc49, type: 2}
+      propertyPath: ChildSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4fc30fad4b35c4b2d84655aa03c507fa,
+        type: 3}
+    - target: {fileID: 11400000, guid: c5392707a985c074ab05b8b264f2cc49, type: 2}
+      propertyPath: VegPiece
+      value: 
+      objectReference: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5392707a985c074ab05b8b264f2cc49, type: 2}
   m_RootGameObject: {fileID: 1367749489}
@@ -1619,6 +1639,19 @@ Prefab:
     - target: {fileID: 400000, guid: b8630ef19831b224382961a975e52279, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b8630ef19831b224382961a975e52279, type: 2}
+      propertyPath: ChildSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c6265af0424d14125b413e2bc523473b,
+        type: 3}
+    - target: {fileID: 11400000, guid: b8630ef19831b224382961a975e52279, type: 2}
+      propertyPath: VegPiece
+      value: 
+      objectReference: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
+    - target: {fileID: 100000, guid: b8630ef19831b224382961a975e52279, type: 2}
+      propertyPath: m_Name
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8630ef19831b224382961a975e52279, type: 2}
@@ -1713,7 +1746,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 601d6523e3a81471baeb27507b56ae16, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 601d6523e3a81471baeb27507b56ae16, type: 2}
       propertyPath: m_LocalScale.x
@@ -2008,6 +2041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce0fa2e5cb064ba5a84e499b8daeb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChildSprite: {fileID: 21300000, guid: 4fc30fad4b35c4b2d84655aa03c507fa, type: 3}
+  VegPiece: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
 --- !u!65 &1367749493
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2295,7 +2330,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
       propertyPath: openHand
@@ -2409,6 +2444,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 21200002, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4c3decd5954274cd3992af77133113cb, type: 2}
@@ -2458,7 +2497,7 @@ Transform:
   - {fileID: 956124052}
   - {fileID: 1753347927}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1608527882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,6 +2604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalKnife: {fileID: 21300000, guid: 753d95839460d48ec9f9c7e3372f26b5, type: 3}
   PickedUpKnife: {fileID: 21300000, guid: 05460d707e6e6470494987b2092e967c, type: 3}
+  ChopSpeed: 100
 --- !u!54 &1653690835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2721,6 +2761,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 30ceda4423612824798a0c0b4414c48c, type: 2}
+      propertyPath: ChildSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: df31b5b4fa48d456aa2607544ff8d8bc,
+        type: 3}
+    - target: {fileID: 11400000, guid: 30ceda4423612824798a0c0b4414c48c, type: 2}
+      propertyPath: VegPiece
+      value: 
+      objectReference: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30ceda4423612824798a0c0b4414c48c, type: 2}
   m_RootGameObject: {fileID: 96403545}
@@ -3024,6 +3073,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 30ceda4423612824798a0c0b4414c48c, type: 2}
+      propertyPath: ChildSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: df31b5b4fa48d456aa2607544ff8d8bc,
+        type: 3}
+    - target: {fileID: 11400000, guid: 30ceda4423612824798a0c0b4414c48c, type: 2}
+      propertyPath: VegPiece
+      value: 
+      objectReference: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30ceda4423612824798a0c0b4414c48c, type: 2}
   m_RootGameObject: {fileID: 164505214}
@@ -3170,6 +3228,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b8630ef19831b224382961a975e52279, type: 2}
+      propertyPath: ChildSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c6265af0424d14125b413e2bc523473b,
+        type: 3}
+    - target: {fileID: 11400000, guid: b8630ef19831b224382961a975e52279, type: 2}
+      propertyPath: VegPiece
+      value: 
+      objectReference: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8630ef19831b224382961a975e52279, type: 2}
   m_RootGameObject: {fileID: 787264982}
