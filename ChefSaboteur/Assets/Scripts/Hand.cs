@@ -16,14 +16,16 @@ public class Hand : MonoBehaviour {
 	public string useButton;
 	public string actionButton;
 
+	private bool _actionButtonActive = false;
 	private SpriteRenderer _spriteRenderer;
 	private Entity _heldObject = null;
 	private Vector3 _velocity = new Vector3 (0, 0, 0);
 	private	bool _isExtending;
 	private float _controllerThreshold = 0.5f;
 	private float _friction = 5f;
-	private float speed = 1000f;
+	private float speed = 750f;
 	private float _maxVelocity = 500f;
+	private int _health = 3;
 
 
 	// Use this for initialization
@@ -49,20 +51,20 @@ public class Hand : MonoBehaviour {
 		if (Mathf.Abs (Input.GetAxis (horizontalAxis)) > _controllerThreshold) {
 			_velocity.x = Input.GetAxis (horizontalAxis) * speed;
 
-			_velocity.x = Mathf.Max(-1 * _maxVelocity, _velocity.x);
-			_velocity.x = Mathf.Min(_maxVelocity, _velocity.x);
+//			_velocity.x = Mathf.Max(-1 * _maxVelocity, _velocity.x);
+//			_velocity.x = Mathf.Min(_maxVelocity, _velocity.x);
 			isActive = true;
 		}
 
-		if (Input.GetAxis (useButton) > _controllerThreshold) {
-			Debug.Log ("Extend Arm.");
-		}
+//		if (Input.GetAxis (useButton) > _controllerThreshold) {
+//			Debug.Log ("Extend Arm.");
+//		}
 
 		//moves hand up and down
 		if (Mathf.Abs (Input.GetAxis (verticalAxis)) > _controllerThreshold) {
 			_velocity.y = -1 * Input.GetAxis (verticalAxis) * speed;
-			_velocity.y = Mathf.Max(-1 * _maxVelocity, _velocity.y);
-			_velocity.y = Mathf.Min(_maxVelocity, _velocity.y);
+//			_velocity.y = Mathf.Max(-1 * _maxVelocity, _velocity.y);
+//			_velocity.y = Mathf.Min(_maxVelocity, _velocity.y);
 			isActive = true;
 		}
 		
@@ -101,21 +103,26 @@ public class Hand : MonoBehaviour {
 	}
 
 	void Interact(Entity.ActionMethod actionmethod, Entity targetobj) {
-		if (Input.GetButtonDown (actionButton)) {
-			Debug.Log("ACTION BUTTON!");
-			if(actionmethod != null) { 
-				Debug.Log ("ACTION METHOD");
-				Entity.ACTIONRESULT result = actionmethod(); 
-				switch(result)
-				{
-					case Entity.ACTIONRESULT.PICKEDUP :
-						_heldObject = targetobj;
-						break;
-					case Entity.ACTIONRESULT.DROPPED :
-						_heldObject = null;
-						break;
+		if (Input.GetAxis (useButton) > 0.5f) {
+			if (!_actionButtonActive) {
+				_actionButtonActive = true;
+				Debug.Log("ACTION BUTTON!");
+				if(actionmethod != null) { 
+					Debug.Log ("ACTION METHOD");
+					Entity.ACTIONRESULT result = actionmethod(); 
+					switch(result)
+					{
+						case Entity.ACTIONRESULT.PICKEDUP :
+							_heldObject = targetobj;
+							break;
+						case Entity.ACTIONRESULT.DROPPED :
+							_heldObject = null;
+							break;
+					}
 				}
 			}
+		} else {
+			_actionButtonActive = false;
 		}
 
 		if (HasItem ()) {
@@ -153,7 +160,7 @@ public class Hand : MonoBehaviour {
 			Vector3 newPos = transform.position;	
 			newPos.y = 720;
 			if (_velocity.y > 0){
-			_velocity.y = 0;
+				_velocity.y = 0;
 			}
 			transform.position = newPos;	
 		}
@@ -164,23 +171,6 @@ public class Hand : MonoBehaviour {
 		upperPos.y = transform.position.y;
 		upperSleeve.transform.position = upperPos;
 	}
-
-	/*
-	void PickUp() {
-
-		Entity[] entities = FindObjectsOfType (typeof(Entity)) as Entity[];
-
-		foreach (Entity entity in entities) {
-			if (Vector3.Distance(transform.position, entity.transform.position) < 150 && entity.IsFree()) {
-				_heldObject = entity;
-				_spriteRenderer.sprite = closedHand;
-				//entity.PickUp(this);
-
-				return;
-			}
-		}
-
-	}*/
 
 	private bool HasItem() {
 		if (_heldObject != null) {
