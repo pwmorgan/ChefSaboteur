@@ -15,7 +15,7 @@ public class TitleScreen : MonoBehaviour {
 	void Update () {
 		if (!_isStarting) {
 			if (Input.GetButtonDown("joystick button 16")) {
-				_animator.Play();
+				//_animator.Play();
 			}
 		}
 	}
