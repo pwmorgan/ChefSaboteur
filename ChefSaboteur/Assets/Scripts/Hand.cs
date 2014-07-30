@@ -97,16 +97,16 @@ public class Hand : MonoBehaviour {
 		Debug.Log ("COLL Enter: " + other.gameObject.ToString());
 		GameObject gameobj = other.gameObject;
 		if (gameobj.GetComponent<Entity> () != null) {
-						bool isUnique = true;
-						foreach (GameObject gobj in _collisionList) {
-								if (gobj == gameobj) {
-										isUnique = false;
-										break;
-								}
-						}
-						if (isUnique) {
-								_collisionList.Add (gameobj);
-						}
+			bool isUnique = true;
+			foreach (GameObject gobj in _collisionList) {
+				if (gobj == gameobj) {
+					isUnique = false;
+					break;
+				}
+			}
+			if (isUnique) {
+				_collisionList.Add (gameobj);
+			}
 		}
 	}
 

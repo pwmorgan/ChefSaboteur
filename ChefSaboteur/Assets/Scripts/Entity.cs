@@ -21,6 +21,7 @@ public abstract class Entity : MonoBehaviour {
 	protected Hand _hand = null;
 	protected List<GameObject> _collisionList;
 	protected SpriteRenderer _spriteRenderer;
+	protected BoxCollider _collider;
 
 	private ENTITYSTATE _state;
 	public ENTITYSTATE State {
@@ -34,7 +35,8 @@ public abstract class Entity : MonoBehaviour {
 		_state = ENTITYSTATE.UNHELD;	
 		_collisionList = new List<GameObject> ();
 			
-		_spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer> () as SpriteRenderer;
+		_spriteRenderer = transform.GetComponent<SpriteRenderer> () as SpriteRenderer;
+		_collider = transform.GetComponent<BoxCollider> () as BoxCollider;
 	}
 	
 	// Update is called once per frame
@@ -67,8 +69,10 @@ public abstract class Entity : MonoBehaviour {
 		}
 	}
 
-	
+
 	public virtual void Move(Vector3 position) {
+		position.x += _collider.center.x;
+		position.y += _collider.center.y;
 		position.z = transform.position.z;
 		transform.position = position;
 	}
