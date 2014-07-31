@@ -47,8 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\Entities\Board.cs" />
      <Compile Include="Assets\Scripts\Entities\Knife.cs" />
+     <Compile Include="Assets\Scripts\Entities\Morsel.cs" />
      <Compile Include="Assets\Scripts\Entities\Vegetable.cs" />
      <Compile Include="Assets\Scripts\Entity.cs" />
      <Compile Include="Assets\Scripts\Hand.cs" />
@@ -56,7 +56,9 @@
      <Compile Include="Assets\Scripts\RecipeManager.cs" />
      <Compile Include="Assets\Scripts\TitleScreen.cs" />
      <Compile Include="Assets\Scripts\Zone.cs" />
+     <Compile Include="Assets\Scripts\Zones\Conveyor.cs" />
      <Compile Include="Assets\Scripts\Zones\CuttingBoard.cs" />
+     <Compile Include="Assets\Scripts\Zones\KnifeBlock.cs" />
      <Compile Include="Assets\Scripts\Zones\StockPot.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

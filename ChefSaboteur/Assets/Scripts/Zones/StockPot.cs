@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StockPot : MonoBehaviour {
+public class StockPot : Zone {
 
 	// Use this for initialization
 	void Start () {

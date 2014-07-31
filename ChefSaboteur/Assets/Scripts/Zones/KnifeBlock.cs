@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CuttingBoard : Zone {
+public class KnifeBlock : Zone {
 
 	// Use this for initialization
 	void Start () {
-		//_zoneType = ZONETYPE.CUTTINGBOARD;
 	
 	}
 	

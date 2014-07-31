@@ -18,12 +18,10 @@ public class Vegetable : Entity {
 
 
 		//Create Pieces
-		GameObject gobj = Instantiate(VegPiece) as GameObject;
-		gobj.GetComponent<SpriteRenderer> ().sprite = ChildSprite;
-		gobj.transform.parent = transform;
+		GameObject gobj = Instantiate(VegPiece, transform.position, Quaternion.identity) as GameObject;
 		Vector2 randompos = Random.insideUnitCircle;
-		gobj.transform.localPosition = new Vector3(randompos.x * 30, -80 + randompos.y * 100, 0);
-		gobj.transform.localScale = new Vector3(1, 1, 1);
+		gobj.transform.localPosition = new Vector3(randompos.x * 30, -80 + randompos.y * 30, 0);
+
 
 	}
 

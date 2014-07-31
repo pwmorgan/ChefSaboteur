@@ -16,7 +16,7 @@ public class Knife : Entity {
 		} else {
 			foreach(GameObject gobj in _collisionList)
 			{
-				if(gobj.GetComponent<Board>() != null)
+				if(gobj.GetComponent<CuttingBoard>() != null)
 				{
 					return Use;
 				}
