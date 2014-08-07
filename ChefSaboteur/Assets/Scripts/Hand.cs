@@ -27,17 +27,22 @@ public class Hand : MonoBehaviour {
 	private float _friction = 5f;
 	private float speed = 750f;
 	private float _maxVelocity = 500f;
-	private int _health = 3;
+	private int _damage = 0;
 
 	private List<GameObject> _collisionList;
+	private List<GameObject> _zoneList;
+
 
 	// Use this for initialization
 	void Start () {
-		_spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer> () as SpriteRenderer;
 
+		_spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer> () as SpriteRenderer;
 		_collisionList = new List<GameObject> ();
+		_zoneList = new List<GameObject> ();
+	
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -47,6 +52,7 @@ public class Hand : MonoBehaviour {
 		Interact (action, targetobj);
 
 	}
+
 
 	void Move() {
 
@@ -84,31 +90,51 @@ public class Hand : MonoBehaviour {
 
 	}
 
-	public void Release() {
-		_heldObject = null;
-		_spriteRenderer.sprite = openHand[_health];
-	}
 
 	void OnTriggerExit(Collider other) {
-		Debug.Log ("COLL Exit: " +  other.gameObject.ToString());
-		_collisionList.Remove (other.gameObject);
-	}
-	void OnTriggerEnter(Collider other) {
-		Debug.Log ("COLL Enter: " + other.gameObject.ToString());
 		GameObject gameobj = other.gameObject;
 		if (gameobj.GetComponent<Entity> () != null) {
-						bool isUnique = true;
-						foreach (GameObject gobj in _collisionList) {
-								if (gobj == gameobj) {
-										isUnique = false;
-										break;
-								}
-						}
-						if (isUnique) {
-								_collisionList.Add (gameobj);
-						}
+			//Debug.Log ("COLL Exit: " +  other.gameObject.ToString());
+			_collisionList.Remove (other.gameObject);
+		}
+
+		if (gameobj.GetComponent<Zone> () != null) {
+			//Debug.Log ("ZONE EXITED: " + other.gameObject.ToString());
+			_zoneList.Remove(other.gameObject);
 		}
 	}
+
+
+	void OnTriggerEnter(Collider other) {
+		GameObject gameobj = other.gameObject;
+		if (gameobj.GetComponent<Entity> () != null) {
+			//Debug.Log ("ENTITY COLLISION: " + other.gameObject.ToString());
+			bool isUnique = true;
+			foreach (GameObject gobj in _collisionList) {
+				if (gobj == gameobj) {
+					isUnique = false;
+					break;
+				}
+			}
+			if (isUnique) {
+				_collisionList.Add (gameobj);
+			}
+		}
+		if (gameobj.GetComponent<Zone> () != null) {
+			//Debug.Log ("ZONE ENTERED: " + other.gameObject.ToString());
+			bool isUnique = true;
+			foreach (GameObject gobj in _zoneList) {
+				if (gobj == gameobj) {
+					isUnique = false;
+					break;
+				}
+			}
+			if (isUnique) {
+				_zoneList.Add (gameobj);
+			}
+		}
+	}
+
 
 	Entity.ActionMethod  GetContext(out Entity targetobj) { 
 		if (HasItem()) {
@@ -127,6 +153,7 @@ public class Hand : MonoBehaviour {
 		return null;
 	}
 
+
 	void Interact(Entity.ActionMethod actionmethod, Entity targetobj) {
 		if (Input.GetAxis (useButton) > 0.5f) {
 			if (!_actionButtonActive) {
@@ -137,12 +164,27 @@ public class Hand : MonoBehaviour {
 					Entity.ACTIONRESULT result = actionmethod(); 
 					switch(result)
 					{
-						case Entity.ACTIONRESULT.PICKEDUP :
-							_heldObject = targetobj;
-							break;
-						case Entity.ACTIONRESULT.DROPPED :
-							_heldObject = null;
-							break;
+					case Entity.ACTIONRESULT.PICKEDUP :
+						_spriteRenderer.sprite = closedHand[_damage];
+						_heldObject = targetobj;
+						break;
+					case Entity.ACTIONRESULT.DROPPED :
+						_spriteRenderer.sprite = openHand[_damage];
+						_heldObject = null;
+						break;
+					case Entity.ACTIONRESULT.CHOP :
+						//Play Use animation
+//						foreach(GameObject gobj in _collisionList)
+//						{
+//							Vegetable vobj = gobj.GetComponent<Vegetable>();
+//							if(vobj != null)
+//							{
+//								vobj.Chop();
+//								break;
+//							}
+//						}
+//
+						break;
 					}
 				}
 			}
@@ -155,6 +197,7 @@ public class Hand : MonoBehaviour {
 		}
 			
 	}
+
 
 	void AdjustToBoundaries() {
 		if (transform.position.x < minX) {
@@ -191,11 +234,13 @@ public class Hand : MonoBehaviour {
 		}
 	}
 
+
 	void MoveSleeves() {
 		Vector3 upperPos = upperSleeve.transform.position;
 		upperPos.y = transform.position.y;
 		upperSleeve.transform.position = upperPos;
 	}
+
 
 	private bool HasItem() {
 		if (_heldObject != null) {
@@ -204,9 +249,26 @@ public class Hand : MonoBehaviour {
 		return false;
 	}
 
-	public void Cut() {
-		// Hand takes damage
-		// Hand drops blood
-	}
 
+	public void Cut() {
+		
+		// Drop blood stain
+		// if _damage == 1, drop bandage
+		// if _damage == 2, drop finger
+		// if _damage == 3, drop bandage
+
+		_damage++;
+
+		if (_damage > 3) {
+			_damage = 3;
+		}
+
+		if (HasItem ()) {
+			_spriteRenderer.sprite = closedHand[_damage];
+		} else {
+			_spriteRenderer.sprite = openHand[_damage];		
+		}
+		
+	}
+	
 }

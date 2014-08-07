@@ -5,6 +5,9 @@ public class Knife : Entity {
 	public Sprite NormalKnife;
 	public Sprite PickedUpKnife;
 
+	public int ChopSpeed;
+	private int _chopTicker;
+
 	public override ActionMethod GetContext()
 	{
 		if (State == ENTITYSTATE.UNHELD) {
@@ -13,7 +16,7 @@ public class Knife : Entity {
 		} else {
 			foreach(GameObject gobj in _collisionList)
 			{
-				if(gobj.GetComponent<Board>() != null)
+				if(gobj.GetComponent<CuttingBoard>() != null)
 				{
 					return Use;
 				}
@@ -32,7 +35,13 @@ public class Knife : Entity {
 	}
 
 	private ACTIONRESULT Use() {
-		return ACTIONRESULT.NOTHING;
+		_chopTicker = ChopSpeed;
+		return ACTIONRESULT.CHOP;
 	}
 
+	protected override void ChildUpdate() {
+		if (_chopTicker >= 0) {
+			_chopTicker--;
+		}
+	}
 }

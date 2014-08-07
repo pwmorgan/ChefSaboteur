@@ -12,7 +12,8 @@ public abstract class Entity : MonoBehaviour {
 	public enum ACTIONRESULT {
 		NOTHING,
 		PICKEDUP,
-		DROPPED
+		DROPPED,
+		CHOP
 	}
 
 	public delegate ACTIONRESULT ActionMethod();
@@ -20,6 +21,8 @@ public abstract class Entity : MonoBehaviour {
 	protected Hand _hand = null;
 	protected List<GameObject> _collisionList;
 	protected SpriteRenderer _spriteRenderer;
+	protected BoxCollider _collider;
+	protected Zone.ZONETYPE[] _allowedZones;
 
 	private ENTITYSTATE _state;
 	public ENTITYSTATE State {
@@ -33,14 +36,18 @@ public abstract class Entity : MonoBehaviour {
 		_state = ENTITYSTATE.UNHELD;	
 		_collisionList = new List<GameObject> ();
 			
-		_spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer> () as SpriteRenderer;
+		_spriteRenderer = transform.GetComponent<SpriteRenderer> () as SpriteRenderer;
+		_collider = transform.GetComponent<BoxCollider> () as BoxCollider;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		ChildUpdate ();
 	}
 
+	protected virtual void ChildUpdate() {
+		//
+	}
 	
 	void OnTriggerExit(Collider other) {
 		Debug.Log ("COLL Exit: " +  other.gameObject.ToString());
@@ -49,7 +56,7 @@ public abstract class Entity : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		Debug.Log ("COLL Enter: " + other.gameObject.ToString());
 		GameObject gameobj = other.gameObject;
-		if (gameobj.GetComponent<Entity> () != null) {
+		if (gameobj.GetComponent<Entity> () != null || gameobj.GetComponent<Zone> () != null) {
 			bool isUnique = true;
 			foreach (GameObject gobj in _collisionList) {
 				if (gobj == gameobj) {
@@ -63,14 +70,12 @@ public abstract class Entity : MonoBehaviour {
 		}
 	}
 
-	
+
 	public virtual void Move(Vector3 position) {
+		position.x -= _collider.center.x;
+		position.y -= _collider.center.y;
 		position.z = transform.position.z;
 		transform.position = position;
-	}
-
-	public bool IsFree() {
-		return _hand == null;
 	}
 
 	public abstract ActionMethod GetContext ();
