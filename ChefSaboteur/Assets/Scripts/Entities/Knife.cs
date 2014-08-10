@@ -6,6 +6,8 @@ public class Knife : Entity {
 	public Sprite PickedUpKnife;
 
 	public int ChopSpeed;
+
+
 	private int _chopTicker;
 
 	public override ActionMethod GetContext()
@@ -16,8 +18,10 @@ public class Knife : Entity {
 		} else {
 			foreach(GameObject gobj in _collisionList)
 			{
+
 				if(gobj.GetComponent<CuttingBoard>() != null)
 				{
+                    CurrentZone = gobj;
 					return Use;
 				}
 			}

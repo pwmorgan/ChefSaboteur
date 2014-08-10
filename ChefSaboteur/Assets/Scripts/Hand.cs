@@ -62,20 +62,13 @@ public class Hand : MonoBehaviour {
 		if (Mathf.Abs (Input.GetAxis (horizontalAxis)) > _controllerThreshold) {
 			_velocity.x = Input.GetAxis (horizontalAxis) * speed;
 
-//			_velocity.x = Mathf.Max(-1 * _maxVelocity, _velocity.x);
-//			_velocity.x = Mathf.Min(_maxVelocity, _velocity.x);
 			isActive = true;
 		}
 
-//		if (Input.GetAxis (useButton) > _controllerThreshold) {
-//			Debug.Log ("Extend Arm.");
-//		}
 
 		//moves hand up and down
 		if (Mathf.Abs (Input.GetAxis (verticalAxis)) > _controllerThreshold) {
 			_velocity.y = -1 * Input.GetAxis (verticalAxis) * speed;
-//			_velocity.y = Mathf.Max(-1 * _maxVelocity, _velocity.y);
-//			_velocity.y = Mathf.Min(_maxVelocity, _velocity.y);
 			isActive = true;
 		}
 		
@@ -94,12 +87,10 @@ public class Hand : MonoBehaviour {
 	void OnTriggerExit(Collider other) {
 		GameObject gameobj = other.gameObject;
 		if (gameobj.GetComponent<Entity> () != null) {
-			//Debug.Log ("COLL Exit: " +  other.gameObject.ToString());
 			_collisionList.Remove (other.gameObject);
 		}
 
 		if (gameobj.GetComponent<Zone> () != null) {
-			//Debug.Log ("ZONE EXITED: " + other.gameObject.ToString());
 			_zoneList.Remove(other.gameObject);
 		}
 	}
@@ -108,7 +99,6 @@ public class Hand : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		GameObject gameobj = other.gameObject;
 		if (gameobj.GetComponent<Entity> () != null) {
-			//Debug.Log ("ENTITY COLLISION: " + other.gameObject.ToString());
 			bool isUnique = true;
 			foreach (GameObject gobj in _collisionList) {
 				if (gobj == gameobj) {
@@ -118,19 +108,6 @@ public class Hand : MonoBehaviour {
 			}
 			if (isUnique) {
 				_collisionList.Add (gameobj);
-			}
-		}
-		if (gameobj.GetComponent<Zone> () != null) {
-			//Debug.Log ("ZONE ENTERED: " + other.gameObject.ToString());
-			bool isUnique = true;
-			foreach (GameObject gobj in _zoneList) {
-				if (gobj == gameobj) {
-					isUnique = false;
-					break;
-				}
-			}
-			if (isUnique) {
-				_zoneList.Add (gameobj);
 			}
 		}
 	}
@@ -158,36 +135,35 @@ public class Hand : MonoBehaviour {
 		if (Input.GetAxis (useButton) > 0.5f) {
 			if (!_actionButtonActive) {
 				_actionButtonActive = true;
-				Debug.Log("ACTION BUTTON!");
+				Debug.Log("ACTION BUTTON!: ");
 				if(actionmethod != null) { 
 					Debug.Log ("ACTION METHOD");
+
 					Entity.ACTIONRESULT result = actionmethod(); 
 					switch(result)
 					{
-					case Entity.ACTIONRESULT.PICKEDUP :
-						_spriteRenderer.sprite = closedHand[_damage];
-						_heldObject = targetobj;
-						break;
-					case Entity.ACTIONRESULT.DROPPED :
-						_spriteRenderer.sprite = openHand[_damage];
-						_heldObject = null;
-						break;
-					case Entity.ACTIONRESULT.CHOP :
-						//Play Use animation
-//						foreach(GameObject gobj in _collisionList)
-//						{
-//							Vegetable vobj = gobj.GetComponent<Vegetable>();
-//							if(vobj != null)
-//							{
-//								vobj.Chop();
-//								break;
-//							}
-//						}
-//
-						break;
+					    case Entity.ACTIONRESULT.PICKEDUP :
+						    _spriteRenderer.sprite = closedHand[_damage];
+						    _heldObject = targetobj;
+						    break;
+					    case Entity.ACTIONRESULT.DROPPED :
+						    _spriteRenderer.sprite = openHand[_damage];
+						    _heldObject = null;
+						    break;
+					    case Entity.ACTIONRESULT.CHOP :
+						    //Play Use animation
+                            GameObject zone = targetobj.CurrentZone;
+                            CuttingBoard board = zone.GetComponent<CuttingBoard>();
+                            if (board != null)
+                            {
+                                board.CutVegetable();
+                            }
+
+						    break;
 					}
 				}
 			}
+
 		} else {
 			_actionButtonActive = false;
 		}

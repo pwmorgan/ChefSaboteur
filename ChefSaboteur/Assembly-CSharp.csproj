@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Entities\Knife.cs" />
      <Compile Include="Assets\Scripts\Entities\Morsel.cs" />
+     <Compile Include="Assets\Scripts\Entities\VegPile.cs" />
      <Compile Include="Assets\Scripts\Entities\Vegetable.cs" />
      <Compile Include="Assets\Scripts\Entity.cs" />
      <Compile Include="Assets\Scripts\Hand.cs" />

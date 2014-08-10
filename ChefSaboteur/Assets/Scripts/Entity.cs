@@ -30,6 +30,12 @@ public abstract class Entity : MonoBehaviour {
 		protected set { _state = value; }
 	}
 
+    private GameObject _currentZone = null;
+    public GameObject CurrentZone
+    {
+        get { return _currentZone; }
+        protected set { _currentZone = value; }
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -56,7 +62,8 @@ public abstract class Entity : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		Debug.Log ("COLL Enter: " + other.gameObject.ToString());
 		GameObject gameobj = other.gameObject;
-		if (gameobj.GetComponent<Entity> () != null || gameobj.GetComponent<Zone> () != null) {
+
+		if (gameobj.GetComponent<Zone> () != null) {
 			bool isUnique = true;
 			foreach (GameObject gobj in _collisionList) {
 				if (gobj == gameobj) {
@@ -80,12 +87,12 @@ public abstract class Entity : MonoBehaviour {
 
 	public abstract ActionMethod GetContext ();
 
-	protected ACTIONRESULT PickUp() {
+	protected virtual ACTIONRESULT PickUp() {
 		State = ENTITYSTATE.HELD;
 		return ACTIONRESULT.PICKEDUP;
 	}
 
-	protected ACTIONRESULT Drop() {
+	protected virtual ACTIONRESULT Drop() {
 		State = ENTITYSTATE.UNHELD;
 		return ACTIONRESULT.DROPPED;
 	}

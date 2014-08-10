@@ -1016,6 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81934ec1ef2c44203ac534fcb1e8b495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vegPrefab: {fileID: 100000, guid: 273ef7ab6e004a446975c4ca93e8f6b9, type: 2}
 --- !u!1 &787264982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,6 +3429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81934ec1ef2c44203ac534fcb1e8b495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vegPrefab: {fileID: 100000, guid: 273ef7ab6e004a446975c4ca93e8f6b9, type: 2}
 --- !u!1001 &1723000030
 Prefab:
   m_ObjectHideFlags: 0
