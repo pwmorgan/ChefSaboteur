@@ -1,25 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Zone : MonoBehaviour {
-
-	public enum ZONETYPE {
-		KNIFE,
-		CUTTINGBOARD,
-		POT,
-		CONVEYOR,
-		DESTROY
-	}
-
-	protected ZONETYPE _zonetype;
-
+public class Destroy  : Zone {
+	
+	public float velocity;
+	
 	// Use this for initialization
 	void Start () {
-	
+		_zonetype = ZONETYPE.DESTROY;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
+		// Move all vegetables
 		
 	}
 
