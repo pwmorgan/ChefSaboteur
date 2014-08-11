@@ -16,6 +16,8 @@ public abstract class Entity : MonoBehaviour {
 		CHOP
 	}
 
+	public float value;
+
 	public delegate ACTIONRESULT ActionMethod();
 
 	protected Hand _hand = null;
@@ -43,6 +45,7 @@ public abstract class Entity : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		ChildUpdate ();
+		Convey ();
 	}
 
 	protected virtual void ChildUpdate() {
@@ -70,6 +73,23 @@ public abstract class Entity : MonoBehaviour {
 		}
 	}
 
+	public virtual void Convey() {
+
+		foreach (GameObject gobj in _collisionList) {
+			if (gobj.GetComponent<Conveyor> () != null) {
+				Conveyor conveyor = gobj.GetComponent<Conveyor> () as Conveyor;
+				Vector3 newPosition = transform.position;
+				newPosition.y += conveyor.velocity * Time.deltaTime;
+				transform.position = newPosition;
+			}
+		}
+
+	}
+
+
+	public void Destroy () {
+		
+	}
 
 	public virtual void Move(Vector3 position) {
 		position.x -= _collider.center.x;

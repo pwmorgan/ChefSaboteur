@@ -14,6 +14,12 @@ public class Vegetable : Entity {
 		}
 	}
 
+
+	public void ChildUpdate() {
+
+	}
+
+
 	public void Chop() {
 
 
