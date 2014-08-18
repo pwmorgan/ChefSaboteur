@@ -27,7 +27,8 @@ public class Hand : MonoBehaviour {
 	private	bool _isExtending;
 	private float _controllerThreshold = 0.5f;
 	private float _friction = 5f;
-	private float speed = 750f;
+	private float speed = 650f;
+	private float verticalSpeed = 400f;
 	private float _maxVelocity = 500f;
 	private int _damage = 0;
 	private float _damageCooldown = 0f;
@@ -73,7 +74,7 @@ public class Hand : MonoBehaviour {
 
 		//moves hand up and down
 		if (Mathf.Abs (Input.GetAxis (verticalAxis)) > _controllerThreshold) {
-			_velocity.y = -1 * Input.GetAxis (verticalAxis) * speed;
+			_velocity.y = -1 * Input.GetAxis (verticalAxis) * verticalSpeed;
 			isActive = true;
 		}
 		
