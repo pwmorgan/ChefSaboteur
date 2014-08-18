@@ -4,6 +4,9 @@ using System.Collections;
 public class CuttingBoard : Zone {
 
     public GameObject _vegPrefab;
+	public int VegVelocity;
+	public int bitOffset;
+	public int vegOffset;
 
     private Vegetable _currentVegetable = null;
     private VegPile _currentVegPile = null;
@@ -33,6 +36,11 @@ public class CuttingBoard : Zone {
 			if (gameobj == _currentVegPile.gameObject) {
 				_currentVegPile = null;
 			}
+		}		
+		if (gameobj.GetComponent<Vegetable> () != null) {
+			if (gameobj == _currentVegetable.gameObject) {
+				_currentVegetable = null;
+			}
 		}
 	}
 
@@ -44,7 +52,7 @@ public class CuttingBoard : Zone {
             {
                 GameObject gobj = Instantiate(_vegPrefab) as GameObject;
                 gobj.transform.parent = transform;
-				gobj.transform.position = new Vector3(transform.position.x, transform.position.y - 50, _currentVegetable.transform.position.z);
+				gobj.transform.position = new Vector3(transform.position.x, transform.position.y - bitOffset, _currentVegetable.transform.position.z);
                 gobj.transform.localScale = new Vector3(1, 1, 1);
 
                 _currentVegPile = gobj.GetComponent<VegPile>();
@@ -65,11 +73,11 @@ public class CuttingBoard : Zone {
     {
 		// If current vegetable
 		if (_currentVegetable != null) {
-			//_currentVegetable.Launch();
+			_currentVegetable.Launch(VegVelocity);
 		}
 
         _currentVegetable = veg;
-		_currentVegetable.transform.localPosition = new Vector3 (transform.position.x, transform.position.y + 75, _currentVegetable.transform.position.z);
+		_currentVegetable.transform.localPosition = new Vector3 (transform.position.x, transform.position.y + vegOffset, _currentVegetable.transform.position.z);
     }
 
 }

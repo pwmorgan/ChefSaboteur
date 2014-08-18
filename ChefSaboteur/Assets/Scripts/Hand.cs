@@ -7,6 +7,8 @@ public class Hand : MonoBehaviour {
 	public float maxX;
 	public float minX;
 
+	public GameObject finger;
+	public GameObject bandage;
 	public GameObject upperSleeve;
 
 	public Sprite[] openHand;
@@ -28,6 +30,8 @@ public class Hand : MonoBehaviour {
 	private float speed = 750f;
 	private float _maxVelocity = 500f;
 	private int _damage = 0;
+	private float _damageCooldown = 0f;
+	private const float DAMAGETIMER = 1f;
 
 	private List<GameObject> _collisionList;
 	private List<GameObject> _zoneList;
@@ -50,6 +54,7 @@ public class Hand : MonoBehaviour {
 		Entity targetobj;
 		Entity.ActionMethod action = GetContext (out targetobj);
 		Interact (action, targetobj);
+		_damageCooldown -= Time.deltaTime;
 
 	}
 
@@ -144,10 +149,16 @@ public class Hand : MonoBehaviour {
 					{
 					    case Entity.ACTIONRESULT.PICKEDUP :
 						    _spriteRenderer.sprite = closedHand[_damage];
-						    _heldObject = targetobj;
+							_heldObject = targetobj;
+							Vector3 pos = _heldObject.transform.position;
+							pos.z += -50;
+							_heldObject.transform.position = pos;
 						    break;
 					    case Entity.ACTIONRESULT.DROPPED :
-						    _spriteRenderer.sprite = openHand[_damage];
+							_spriteRenderer.sprite = openHand[_damage];
+							Vector3 pos2 = _heldObject.transform.position;
+							pos2.z += 50;
+							_heldObject.transform.position = pos2;
 						    _heldObject = null;
 						    break;
 					    case Entity.ACTIONRESULT.CHOP :
@@ -159,6 +170,17 @@ public class Hand : MonoBehaviour {
                                 board.CutVegetable();
                             }
 
+							// Get all hands 		
+							Hand[] hands = Resources.FindObjectsOfTypeAll (typeof(Hand)) as Hand[];
+							Vector3 knifePosition = targetobj.transform.GetChild(0).transform.position;
+							knifePosition.z = 0;
+							foreach (Hand hand in hands) {
+								Vector3 handPosition = hand.transform.position;
+								handPosition.z = 0;
+								if (Vector3.Distance(handPosition, knifePosition) < 75) {
+									hand.Cut();		
+								}
+							}
 						    break;
 					}
 				}
@@ -227,23 +249,30 @@ public class Hand : MonoBehaviour {
 
 
 	public void Cut() {
-		
-		// Drop blood stain
-		// if _damage == 1, drop bandage
-		// if _damage == 2, drop finger
-		// if _damage == 3, drop bandage
+
+		if (_damageCooldown > 0) {
+			return;		
+		}
 
 		_damage++;
+		_damageCooldown = DAMAGETIMER;
+
+		Vector3 position = transform.position;
+		position.z = 0;
 
 		if (_damage > 3) {
+			Instantiate (bandage, transform.position, transform.rotation);
 			_damage = 3;
+			return;
 		}
 
-		if (HasItem ()) {
-			_spriteRenderer.sprite = closedHand[_damage];
+		if (_heldObject != null) {
+			_spriteRenderer.sprite = closedHand [_damage];
 		} else {
-			_spriteRenderer.sprite = openHand[_damage];		
+			_spriteRenderer.sprite = openHand [_damage];
 		}
+
+		Instantiate (finger, transform.position, transform.rotation);
 		
 	}
 	

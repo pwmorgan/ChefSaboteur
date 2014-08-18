@@ -5,6 +5,8 @@ public class Vegetable : Entity {
 	public Sprite ChildSprite;
 	public GameObject VegPiece;
 
+	private Vector3 _velocity = Vector3.zero;
+
 	private int _health = 5;
 
 	public override ActionMethod GetContext()
@@ -20,10 +22,13 @@ public class Vegetable : Entity {
 		return _health;
 	}
 
-	public void ChildUpdate() {
-
+	protected override void ChildUpdate() {
+		transform.position = transform.position + _velocity * Time.deltaTime;
 	}
 
+	public void Launch(int multiplier) {
+		_velocity = new Vector3 ((Random.value + 1 * 500) * multiplier, (Random.value + 1 * 500) * multiplier, 0);
+	}
 
 	public void Chop() {
 
@@ -52,7 +57,15 @@ public class Vegetable : Entity {
             {
                 board.AddVegetable(this);
                 CurrentZone = gobj;
+				break;
             }
+			
+			StockPot pot = gobj.GetComponent<StockPot>();
+			if (pot != null)
+			{
+				pot.AddIngredient(this);
+				break;
+			}
         }
 
         State = ENTITYSTATE.UNHELD;
