@@ -19,17 +19,25 @@ public class Knife : Entity {
 			foreach(GameObject gobj in _collisionList)
 			{
 
-				if(gobj.GetComponent<CuttingBoard>() != null)
+				if(gobj.GetComponent<KnifeBlock>() != null)
 				{
-                    CurrentZone = gobj;
-					return Use;
+					
+					OnDrop ();
+					return Drop;
+				}				
+				else if(gobj.GetComponent<CuttingBoard>() != null)
+				{
+
+					CurrentZone = gobj;
 				}
+
 			}
-			OnDrop ();
-			return Drop;
+			
+			return Use;
+			
 		}
 	}
-
+	
 	private void OnPickup() {
 		_spriteRenderer.sprite = NormalKnife;
 	}

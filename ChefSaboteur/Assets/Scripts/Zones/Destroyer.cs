@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Destroy  : Zone {
+public class Destroyer : Zone {
 	
 	public float velocity;
 	

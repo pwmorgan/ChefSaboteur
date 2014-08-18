@@ -63,10 +63,16 @@ public abstract class Entity : MonoBehaviour {
 		_collisionList.Remove (other.gameObject);
 	}
 	void OnTriggerEnter(Collider other) {
-		Debug.Log ("COLL Enter: " + other.gameObject.ToString());
+		//Debug.Log ("COLL Enter: " + other.gameObject.ToString());
 		GameObject gameobj = other.gameObject;
 
 		if (gameobj.GetComponent<Zone> () != null) {
+
+			if (gameobj.GetComponent<Destroyer>() != null) {
+				DestroyEntity ();
+				return;
+			}
+
 			bool isUnique = true;
 			foreach (GameObject gobj in _collisionList) {
 				if (gobj == gameobj) {
@@ -94,8 +100,14 @@ public abstract class Entity : MonoBehaviour {
 	}
 
 
-	public void Destroy () {
-		
+	public void DestroyEntity () {
+		// Remove from hand colliders
+		Hand[] hands = Resources.FindObjectsOfTypeAll (typeof(Hand)) as Hand[];
+		foreach (Hand hand in hands) {
+			hand.OnTriggerExit(this.collider);		
+		}
+
+		Destroy (gameObject);
 	}
 
 	public virtual void Move(Vector3 position) {

@@ -69,6 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce0fa2e5cb064ba5a84e499b8daeb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  value: 0
+  ChildSprite: {fileID: 21300000, guid: c6265af0424d14125b413e2bc523473b, type: 3}
+  VegPiece: {fileID: 100000, guid: 9b4112f26e8796b44ab1c2c8b94b7398, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

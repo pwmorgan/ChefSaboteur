@@ -16,9 +16,24 @@ public class VegPile : Entity {
 
 	}
 
-	private void OnDrop() {
-
+	public void AddValue(int newvalue) {
+		value += newvalue;
 	}
 
-    
+	
+	protected override ACTIONRESULT Drop()
+	{
+		foreach (GameObject gobj in _collisionList)
+		{
+			StockPot pot = gobj.GetComponent<StockPot>();
+			if (pot != null)
+			{
+				pot.AddIngredient(this);
+			}
+		}
+		
+		State = ENTITYSTATE.UNHELD;
+		return ACTIONRESULT.DROPPED;
+	}
+	
 }

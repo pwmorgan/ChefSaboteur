@@ -84,7 +84,7 @@ public class Hand : MonoBehaviour {
 	}
 
 
-	void OnTriggerExit(Collider other) {
+	public void OnTriggerExit(Collider other) {
 		GameObject gameobj = other.gameObject;
 		if (gameobj.GetComponent<Entity> () != null) {
 			_collisionList.Remove (other.gameObject);

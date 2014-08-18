@@ -5,10 +5,10 @@ public class RecipeManager : MonoBehaviour {
 	
 	public GameObject indicator;
 	
-	private float _score = 50;
+	private float _score = 500;
 	
 	private float _minScore = 0;
-	private float _maxScore = 100;
+	private float _maxScore = 1000;
 	private float _minY = 100;
 	private float _maxY = 620;
 
@@ -40,6 +40,10 @@ public class RecipeManager : MonoBehaviour {
 			_score = _minScore;	
 		}
 	
+	}
+
+	public float GetScore() {
+		return _score;
 	}
 
 }

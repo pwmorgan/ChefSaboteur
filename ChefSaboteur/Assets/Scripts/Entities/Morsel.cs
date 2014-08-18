@@ -12,4 +12,19 @@ public class Morsel : Entity {
 		}
 	}
 
+	protected override ACTIONRESULT Drop()
+	{
+		foreach (GameObject gobj in _collisionList)
+		{
+			StockPot pot = gobj.GetComponent<StockPot>();
+			if (pot != null)
+			{
+				pot.AddIngredient(this);
+			}
+		}
+		
+		State = ENTITYSTATE.UNHELD;
+		return ACTIONRESULT.DROPPED;
+	}
+
 }

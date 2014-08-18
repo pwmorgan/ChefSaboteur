@@ -15,7 +15,7 @@ public class StockPot : Zone {
 	public void AddIngredient(Entity ingredient) {
 
 		recipeManager.AddScore(ingredient.value);
-		ingredient.Destroy();
+		ingredient.DestroyEntity();
 
 	}
 
