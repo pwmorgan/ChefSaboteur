@@ -204,7 +204,7 @@ Transform:
   m_LocalScale: {x: .75, y: .75, z: 1}
   m_Children: []
   m_Father: {fileID: 1711930126}
-  m_RootOrder: 0
+  m_RootOrder: 4
 --- !u!114 &96403547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +608,7 @@ Transform:
   m_LocalScale: {x: .75, y: .75, z: 1}
   m_Children: []
   m_Father: {fileID: 1711930126}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1 &181990521
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,8 +652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b3993c127334c01beecfa5689a88ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lefthand: {fileID: 811691869}
-  righthand: {fileID: 1514214481}
+  tophand: {fileID: 811691869}
+  bottomhand: {fileID: 1514214481}
 --- !u!114 &181990524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,7 +1013,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 1400, z: 1}
+  m_Size: {x: 100, y: 1600, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &480209399
 GameObject:
@@ -1355,7 +1355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _vegPrefab: {fileID: 100000, guid: 273ef7ab6e004a446975c4ca93e8f6b9, type: 2}
   VegVelocity: 1
-  bitOffset: -50
+  bitOffset: 50
   vegOffset: 75
 --- !u!1 &787264982
 GameObject:
@@ -1410,7 +1410,7 @@ Transform:
   m_LocalScale: {x: .75, y: .75, z: 1}
   m_Children: []
   m_Father: {fileID: 1711930126}
-  m_RootOrder: 5
+  m_RootOrder: 3
 --- !u!114 &787264985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2665,7 +2665,7 @@ Transform:
   m_GameObject: {fileID: 1254011294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 640, y: 360, z: 1000}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2751,7 +2751,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1711930126}
-  m_RootOrder: 1
+  m_RootOrder: 5
 --- !u!212 &1367749491
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3368,8 +3368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b3993c127334c01beecfa5689a88ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lefthand: {fileID: 1753347926}
-  righthand: {fileID: 956124051}
+  tophand: {fileID: 956124051}
+  bottomhand: {fileID: 1753347926}
 --- !u!4 &1571993946
 Transform:
   m_ObjectHideFlags: 0
@@ -3426,7 +3426,7 @@ Transform:
   m_LocalScale: {x: .75, y: .75, z: 1}
   m_Children: []
   m_Father: {fileID: 1711930126}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!65 &1578067621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3733,7 +3733,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1657185770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 723.043396, y: -300, z: -4.9375}
+  m_LocalPosition: {x: 723.043396, y: -430.995239, z: -4.9375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3763,12 +3763,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 96403546}
-  - {fileID: 1367749490}
   - {fileID: 1578067620}
   - {fileID: 1716628418}
   - {fileID: 164505219}
   - {fileID: 787264984}
+  - {fileID: 96403546}
+  - {fileID: 1367749490}
   m_Father: {fileID: 0}
   m_RootOrder: 8
 --- !u!1 &1716628417
@@ -3801,7 +3801,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1711930126}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!65 &1716628419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3962,7 +3962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _vegPrefab: {fileID: 100000, guid: 273ef7ab6e004a446975c4ca93e8f6b9, type: 2}
   VegVelocity: -1
-  bitOffset: 50
+  bitOffset: -50
   vegOffset: -75
 --- !u!1001 &1723000030
 Prefab:
@@ -4216,7 +4216,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1845036873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 541.827026, y: 1000, z: -4.9375}
+  m_LocalPosition: {x: 541.827026, y: 1163.82202, z: -4.9375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4612,7 +4612,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 1400, z: 1}
+  m_Size: {x: 100, y: 1600, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2134788873
 GameObject:
